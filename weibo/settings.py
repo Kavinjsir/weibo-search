@@ -17,9 +17,9 @@ DEFAULT_REQUEST_HEADERS = {
 }
 ITEM_PIPELINES = {
     'weibo.pipelines.DuplicatesPipeline': 300,
-    'weibo.pipelines.CsvPipeline': 301,
+    # 'weibo.pipelines.CsvPipeline': 301,
     # 'weibo.pipelines.MysqlPipeline': 302,
-    # 'weibo.pipelines.MongoPipeline': 303,
+    'weibo.pipelines.MongoPipeline': 303,
     # 'weibo.pipelines.MyImagesPipeline': 304,
     # 'weibo.pipelines.MyVideoPipeline': 305
 }
@@ -53,10 +53,11 @@ IMAGES_STORE = './'
 FILES_STORE = './'
 
 # 配置MongoDB数据库
-# MONGO_URI = 'localhost'
+# mongodb+srv://:<password>@/myFirstDatabase?retryWrites=true&w=majority
+MONGO_URI = 'mongodb+srv://crawler:ThRZb0wCj0YHkqy6@sunday.jep2j.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 # 配置MySQL数据库，以下为默认配置，可以根据实际情况更改，程序会自动生成一个名为weibo的数据库，如果想换其它名字请更改MYSQL_DATABASE值
-# MYSQL_HOST = 'localhost'
+# MYSQL_HOST = 'sunday.jep2j.mongodb.net'
 # MYSQL_PORT = 3306
-# MYSQL_USER = 'root'
-# MYSQL_PASSWORD = '123456'
+# MYSQL_USER = 'crawler'
+# MYSQL_PASSWORD = 'ThRZb0wCj0YHkqy6'
 # MYSQL_DATABASE = 'weibo'
