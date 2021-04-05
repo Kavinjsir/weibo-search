@@ -27,7 +27,7 @@ ITEM_PIPELINES = {
 }
 # 要搜索的关键词列表，可写多个, 值可以是由关键词或话题组成的列表，也可以是包含关键词的txt文件路径，
 # 如'keyword_list.txt'，txt文件中每个关键词占一行
-KEYWORD_LIST = ['深入理解计算机系统']  # 或者 KEYWORD_LIST = 'keyword_list.txt'
+KEYWORD_LIST = ['生孩子']  # 或者 KEYWORD_LIST = 'keyword_list.txt'
 
 # 要搜索的微博类型，0代表搜索全部微博，1代表搜索全部原创微博，2代表热门微博，3代表关注人微博，4代表认证用户微博，5代表媒体微博，6代表观点微博
 WEIBO_TYPE = 1
