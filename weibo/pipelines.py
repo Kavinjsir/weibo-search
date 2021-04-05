@@ -8,6 +8,9 @@
 import copy
 import csv
 import os
+import logging
+import boto3
+from botocore.exceptions import ClientError
 
 import scrapy
 from scrapy.exceptions import DropItem
@@ -17,13 +20,25 @@ from scrapy.utils.project import get_project_settings
 
 settings = get_project_settings()
 
+s3_client = boto3.client('s3')
+s3_bucket = 'weibo-test-data'
+
+# create tmp csv file
+start_date = settings.get('START_DATE')
+end_date = settings.get('END_DATE')
+keyword = settings.getlist('KEYWORD_LIST')[0]
+file_path = keyword + '_' + start_date + '_' + end_date + '.csv'
+
 
 class CsvPipeline(object):
     def process_item(self, item, spider):
+        '''
         base_dir = '结果文件' + os.sep + item['keyword']
         if not os.path.isdir(base_dir):
             os.makedirs(base_dir)
         file_path = base_dir + os.sep + item['keyword'] + '.csv'
+        '''
+
         if not os.path.isfile(file_path):
             is_first_write = 1
         else:
@@ -40,8 +55,14 @@ class CsvPipeline(object):
                     writer.writerow(header)
                 writer.writerow(
                     [item['weibo'][key] for key in item['weibo'].keys()])
+
         return item
 
+    def close_spider(self, spider):
+        try:
+            response = s3_client.upload_file(file_path, s3_bucket, file_path)
+        except ClientError as e:
+            loggin.error(e)
 
 class MyImagesPipeline(ImagesPipeline):
     def get_media_requests(self, item, info):
@@ -94,8 +115,8 @@ class MongoPipeline(object):
         try:
             from pymongo import MongoClient
             self.client = MongoClient(settings.get('MONGO_URI'))
-            self.db = self.client['weibo']
-            self.collection = self.db['weibo']
+            self.db = self.client['foo']
+            self.collection = self.db['签证']
         except ModuleNotFoundError:
             spider.pymongo_error = True
 

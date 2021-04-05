@@ -1,31 +1,33 @@
 # -*- coding: utf-8 -*-
 
+from random import randint
+
 BOT_NAME = 'weibo'
 SPIDER_MODULES = ['weibo.spiders']
 NEWSPIDER_MODULE = 'weibo.spiders'
 COOKIES_ENABLED = False
 TELNETCONSOLE_ENABLED = False
 LOG_LEVEL = 'ERROR'
-# 访问完一个页面再访问下一个时需要等待的时间，默认为10秒
-DOWNLOAD_DELAY = 10
+# 访问完一个页面再访问下一个时需要等待的时间 (A random value between 2-5 seconds --tony, Apr 5th, 2021)
+DOWNLOAD_DELAY = randint(2, 5)
+
 DEFAULT_REQUEST_HEADERS = {
     'Accept':
     'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
     'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8,en-US;q=0.7',
     'cookie:': 'SCF=AolrjEdbs-UqesktjmOO4UaKyvRKHQKEYFtQeUuICNrCA67tC1ki7wPJryJ4WqYRTwmKY4qfxaXYykr-5LuP27g.; SUB=_2A25NMhaODeRhGeRL6lcS9S3Ewj-IHXVu3LrGrDV6PUJbktAKLXDzkW1NUzVErI4GEh03YCOIyp9KzZuPx3NNU0Kr; SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9WWql6Bk8xTV2sNdSyM0qW8W5NHD95QESK2fe0-01h.0Ws4Dqcj.i--Ri-zRiKysi--ci-82iKyhi--NiKnpi-8si--NiKnpi-8F; '
-    # 'cookie': 'WEIBOCN_FROM=1110006030; SUB=_2A25NTwXuDeRhGeBO6VAR8yvEzjmIHXVus6umrDV6PUJbkdAKLUPEkW1NSjnyM6BjaladRjMRNgEUO7ZikRxxW7EK; _T_WM=98836883922; MLOGIN=1; M_WEIBOCN_PARAMS=lfid%3D102803%26luicode%3D20000174%26uicode%3D20000174'
 }
 ITEM_PIPELINES = {
     'weibo.pipelines.DuplicatesPipeline': 300,
-    # 'weibo.pipelines.CsvPipeline': 301,
+    'weibo.pipelines.CsvPipeline': 301,
     # 'weibo.pipelines.MysqlPipeline': 302,
-    'weibo.pipelines.MongoPipeline': 303,
+    # 'weibo.pipelines.MongoPipeline': 303,
     # 'weibo.pipelines.MyImagesPipeline': 304,
     # 'weibo.pipelines.MyVideoPipeline': 305
 }
 # 要搜索的关键词列表，可写多个, 值可以是由关键词或话题组成的列表，也可以是包含关键词的txt文件路径，
 # 如'keyword_list.txt'，txt文件中每个关键词占一行
-KEYWORD_LIST = ['生孩子']  # 或者 KEYWORD_LIST = 'keyword_list.txt'
+KEYWORD_LIST = ['深入理解计算机系统']  # 或者 KEYWORD_LIST = 'keyword_list.txt'
 
 # 要搜索的微博类型，0代表搜索全部微博，1代表搜索全部原创微博，2代表热门微博，3代表关注人微博，4代表认证用户微博，5代表媒体微博，6代表观点微博
 WEIBO_TYPE = 1
@@ -38,9 +40,9 @@ CONTAIN_TYPE = 0
 REGION = ['全部']
 
 # 搜索的起始日期，为yyyy-mm-dd形式，搜索结果包含该日期
-START_DATE = '2018-01-01'
+START_DATE = '2020-03-05'
 # 搜索的终止日期，为yyyy-mm-dd形式，搜索结果包含该日期
-END_DATE = '2018-12-31'
+END_DATE = '2020-03-05'
 
 # 进一步细分搜索的阈值，若结果页数大于等于该值，则认为结果没有完全展示，细分搜索条件重新搜索以获取更多微博。数值越大速度越快，也越有可能漏掉微博；数值越小速度越慢，获取的微博就越多。
 # 建议数值大小设置在40到50之间。
@@ -53,8 +55,8 @@ IMAGES_STORE = './'
 FILES_STORE = './'
 
 # 配置MongoDB数据库
-# mongodb+srv://:<password>@/myFirstDatabase?retryWrites=true&w=majority
-MONGO_URI = 'mongodb+srv://crawler:ThRZb0wCj0YHkqy6@sunday.jep2j.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+# FIXME: avoid git trace
+MONGO_URI = 'mongodb+srv://test:W92udYsPVnHjHMit@sunday.jep2j.mongodb.net/foo?retryWrites=true&w=majority'
 # 配置MySQL数据库，以下为默认配置，可以根据实际情况更改，程序会自动生成一个名为weibo的数据库，如果想换其它名字请更改MYSQL_DATABASE值
 # MYSQL_HOST = 'sunday.jep2j.mongodb.net'
 # MYSQL_PORT = 3306
