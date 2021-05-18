@@ -1,1 +1,1 @@
-worker: scrapy crawl search 
+web: scrapy crawl search 
