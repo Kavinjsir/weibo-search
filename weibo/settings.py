@@ -15,7 +15,7 @@ DEFAULT_REQUEST_HEADERS = {
     'Accept':
     'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
     'Accept-Language': 'zh-CN,zh;q=0.9,en;q=0.8,en-US;q=0.7',
-    'cookie:': 'SCF=AolrjEdbs-UqesktjmOO4UaKyvRKHQKEYFtQeUuICNrCA67tC1ki7wPJryJ4WqYRTwmKY4qfxaXYykr-5LuP27g.; SUB=_2A25NMhaODeRhGeRL6lcS9S3Ewj-IHXVu3LrGrDV6PUJbktAKLXDzkW1NUzVErI4GEh03YCOIyp9KzZuPx3NNU0Kr; SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9WWql6Bk8xTV2sNdSyM0qW8W5NHD95QESK2fe0-01h.0Ws4Dqcj.i--Ri-zRiKysi--ci-82iKyhi--NiKnpi-8si--NiKnpi-8F; '
+    'cookie:': 'SCF=AolrjEdbs-UqesktjmOO4UaKyvRKHQKEYFtQeUuICNrCA67tC1ki7wPJryJ4WqYRTwmKY4qfxaXYykr-5LuP27g.; SUB=_2A25NMhaODeRhGeRL6lcS9S3Ewj-IHXVu3LrGrDV6PUJbktAKLXDzkW1NUzVErI4GEh03YCOIyp9KzZuPx3NNU0Kr; SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9WWql6Bk8xTV2sNdSyM0qW8W5NHD95QESK2fe0-01h.0Ws4Dqcj.i--Ri-zRiKysi--ci-82iKyhi--NiKnpi-8si--NiKnpi-8F;'
 }
 ITEM_PIPELINES = {
     'weibo.pipelines.DuplicatesPipeline': 300,
